@@ -1,0 +1,35 @@
+server:
+  port: 0 
+
+debug: false
+
+logging:
+  level:
+    com.indivaragroup: debug
+    org.springframework: info
+    org.springframework.test: info
+  config: classpath:log4j2.xml
+
+spring:
+    hazelcast:
+      config: basic-hazelcast-default.xml
+
+    jackson:
+        serialization:
+            write-dates-as-timestamps: true
+        default-property-inclusion: non-null 
+        
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://basic-eureka-server:8761/eureka
+
+elasticsearch:
+  seed:
+    host: elastic1
+    port: 9300
+  cluster:
+    name: fif-fema-elastic
+  sniff: false
+
+

@@ -1,0 +1,47 @@
+server:
+  port: 0 
+
+debug: false
+
+logging:
+  level:
+    id.co.fif.fema: debug
+    org.springframework: info
+    org.springframework.test: info
+  config: classpath:log4j2.xml
+
+spring:
+    hazelcast:
+      config: basic-hazelcast-default.xml
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: org.postgresql.Driver
+        password: password
+        url: jdbc:postgresql://localhost:5432/hcms_gateway_service
+        username: hcms_gateway_service
+        hikari:
+          maximum-pool-size: 10
+          connection-test-query: select 1
+          idle-timeout: 120000
+
+    jackson:
+        serialization:
+            write-dates-as-timestamps: true
+        default-property-inclusion: non-null 
+    jpa:
+        database: postgresql
+        hibernate:
+            ddl-auto: update
+        show-sql: false  
+
+eureka:
+  instance:
+    prefer-ip-address: true 
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+fema.hcms.api.url: http://fema-hcms-api-service-fif-fema.apps.fifgroup.co.id
+fema.hcms.api.username: fema-hcms-api
+fema.hcms.api.password: ENC(Bz3T5cuLNrLX68BQ85RUiE8IzxymzFE1I02ifg1nMoa1lXwqWA46L98R+Euklfmq)
+

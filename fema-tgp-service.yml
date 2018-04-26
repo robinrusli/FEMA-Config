@@ -1,0 +1,49 @@
+server:
+  port: 8590 
+
+debug: true
+
+logging:
+  level:
+    id.co.fif.fema: debug
+    org.springframework: info
+    org.springframework.test: info
+  config: classpath:log4j2.xml
+
+spring:
+    hazelcast:
+        config: basic-hazelcast-default.xml
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: org.postgresql.Driver
+        password: 12345678Aa
+        url: jdbc:postgresql://femadb-dev.fifgroup.co.id:5432/tgp_service
+        username: tgp_service
+        hikari:
+          maximum-pool-size: 10
+          connection-test-query: select 1
+          idle-timeout: 120000
+
+    jackson:
+        serialization:
+            write-dates-as-timestamps: true
+        default-property-inclusion: non-null 
+    jpa:
+        database: postgresql
+        hibernate:
+            ddl-auto: update
+        show-sql: false  
+
+management.security.enabled: false
+
+eureka:
+  instance:
+    prefer-ip-address: true 
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+fema.report.universal.ds.maxPoolSize: 10
+

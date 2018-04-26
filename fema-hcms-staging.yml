@@ -1,0 +1,12 @@
+spring:
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: oracle.jdbc.OracleDriver
+        password: hcstg
+        url: jdbc:oracle:thin:@//10.17.33.67:1526/HCSTG
+        username: HCSTG
+        hikari:
+          maximum-pool-size: 10
+          connection-test-query: select 1 from dual
+          idle-timeout: 120000
+

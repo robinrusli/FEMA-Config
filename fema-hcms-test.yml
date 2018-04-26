@@ -1,0 +1,12 @@
+spring:
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: oracle.jdbc.OracleDriver
+        password: hcmst3st15
+        url: jdbc:oracle:thin:@//10.17.18.86:1521/HCMSTEST
+        username: Hcms
+        hikari:
+          maximum-pool-size: 10
+          connection-test-query: select 1 from dual
+          idle-timeout: 120000
+

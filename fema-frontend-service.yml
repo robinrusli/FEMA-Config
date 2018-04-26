@@ -1,0 +1,41 @@
+server:
+  port: 8081
+  use-forward-headers: true
+
+
+debug: false
+
+logging:
+  level:
+    id.co.fif.fema: debug
+    com.indivaragroup: info
+    com.indivaragroup.basic.security.jwt: debug
+    org.springframework.jms: info
+    
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+    default-property-inclusion: non-null 
+  hazelcast:
+    config: basic-hazelcast-default.xml
+  thymeleaf:
+    mode: LEGACYHTML5
+
+frontend:
+  cors:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation: 
+          thread:
+            timeoutInMilliseconds: 120000
+                

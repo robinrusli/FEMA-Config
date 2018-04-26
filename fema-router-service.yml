@@ -1,0 +1,65 @@
+server:
+  port: 8082
+debug: false
+
+logging:
+  level:
+    id.co.fif.fema: debug
+    com.hazelcast: debug
+  config: classpath:log4j2.xml
+
+endpoints:
+  health:
+    sensitive: false
+  shutdown:
+    enabled: true
+
+spring:
+  hazelcast:
+    config: basic-hazelcast-default.xml
+
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true      
+    default-property-inclusion: non-null 
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+      - org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration
+      - org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration
+  
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation: 
+          thread:
+            timeoutInMilliseconds: 1200000
+                    
+frontend:
+  cors:
+    enabled: true
+    
+management.security.enabled: false
+
+fema:
+  router:
+    security:
+      - paths: /fema-lookup-service/lookup/save
+        method: POST
+        roles: CMS_LOOKUP
+      - paths: /fema-credential-service/user_setup/**
+        roles: CMS_USER_SETUP
+      - paths: /fema-credential-service/responsibility/**
+        roles: CMS_RESPONSIBILITY_SETUP
+
+jwt.secret: _AUTO_
+jwt.timeout.web: 30
+jwt.timeout.mobile: 600
