@@ -17,7 +17,7 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
         password: 12345678Aa
-        url: jdbc:postgresql://femadb-dev.fifgroup.co.id:5432/core_service
+        url: jdbc:postgresql://localhost:5432/core_service
         username: core_service
         hikari:
           maximum-pool-size: 10
