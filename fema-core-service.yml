@@ -23,7 +23,10 @@ spring:
           maximum-pool-size: 10
           connection-test-query: select 1
           idle-timeout: 120000
-
+    http:
+      multipart:
+        max-file-size: 4096KB
+        max-request-size: 4096KB
     jackson:
         serialization:
             write-dates-as-timestamps: true

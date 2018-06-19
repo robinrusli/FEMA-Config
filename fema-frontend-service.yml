@@ -24,7 +24,7 @@ spring:
 
 frontend:
   cors:
-    enabled: true
+    enabled: false
 
 eureka:
   client:

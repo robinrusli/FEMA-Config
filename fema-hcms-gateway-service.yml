@@ -16,7 +16,7 @@ spring:
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
-        password: password
+        password: 12345678Aa
         url: jdbc:postgresql://localhost:5432/hcms_gateway_service
         username: hcms_gateway_service
         hikari:

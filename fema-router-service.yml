@@ -17,7 +17,10 @@ endpoints:
 spring:
   hazelcast:
     config: basic-hazelcast-default.xml
-
+  http:
+    multipart:
+      max-file-size: 4096KB
+      max-request-size: 4096KB
   jackson:
     serialization:
       write-dates-as-timestamps: true      
@@ -35,6 +38,10 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
 
+ribbon:
+  ReadTimeout: 1200000
+  ConnectTimeout: 1200000
+  
 hystrix:
   command:
     default:
@@ -59,6 +66,9 @@ fema:
         roles: CMS_USER_SETUP
       - paths: /fema-credential-service/responsibility/**
         roles: CMS_RESPONSIBILITY_SETUP
+      - paths: /fema-lookup-service/lookup/global_setup/**
+        method: GET
+        roles: CMS_CHANNEL_SETUP
 
 jwt.secret: _AUTO_
 jwt.timeout.web: 30

@@ -1,5 +1,5 @@
 server:
-  port: 8600 
+  port: 8080 
 
 debug: false
 
@@ -12,16 +12,13 @@ logging:
 
 spring:
     hazelcast:
-      config: fema-hazelcast-local.xml
+      config: basic-hazelcast-default.xml
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.postgresql.Driver
         password: 12345678Aa
-        url: jdbc:postgresql://localhost:5432/report_service
-        username: report_service
-#        password: aA87654321
-#        url: jdbc:postgresql://femadb-dev.fifgroup.co.id:5432/report_service_sit
-#        username: report_service_sit
+        url: jdbc:postgresql://localhost:5432/culture_service
+        username: culture_service
         hikari:
           maximum-pool-size: 10
           connection-test-query: select 1
@@ -38,9 +35,8 @@ spring:
         show-sql: false  
 
 eureka:
+  instance:
+    prefer-ip-address: true 
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
-
-
-
